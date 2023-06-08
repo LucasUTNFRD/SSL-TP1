@@ -12,19 +12,23 @@ class DFA :
     
     def run (self,w) :
         q = self.q0
-        while w!="" :
-            q = self.delta[(q,w[0])]
-            w = w[1:]
-        if q in self.F:
-            return True
+    
+    for symbol in w:
+        if (q,symbol) in self.delta:
+            q = self.delta[(q,symbol)] #manejamos las keys del dict como tuplas :)
         else:
             return False
+        
+        return q in self.F #devuelve boolean que dice si estan en los finales
 
-D0 = DFA(
+oprel = DFA(
         {0,1,2,3,4,5,6,7,8},
         {"<","=","!",">"},
         {(0,"<"):1,(0,"="):5,(0,">"):6,(1,"="):2,(0,"!"):9,(1," "):4,(6,"="):7,(6," "):8,(9,"="):10},
         0,
         {2,3,4,5,7,8,10}
         )
-print(D0.run("!="))
+#checkear pagina 132 para mas data
+ID = DFA(  
+
+        )
