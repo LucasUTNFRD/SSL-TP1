@@ -21,21 +21,22 @@ class DFA :
         
         return q in self.F #devuelve boolean que dice si estan en los finales
 
+### tokens
+
 oprel = DFA(
         {0,1,2,3,4,5,6,7,8},
         {"<","=","!",">"},
-        {(0,"<"):1,(0,"="):5,(0,">"):6,(1,"="):2,(0,"!"):9,(1," "):4,(6,"="):7,(6," "):8,(9,"="):10},
+        {(0,"!"):7,(0,'<'):1,(0,'='):3,(0,'>'):5,(1,'='):2,(3,'='):4,(5,'='):6,(7,'='):8},
         0,
-        {2,3,4,5,7,8,10}
+        {1,2,4,5,6,8}
 )
 
-
+### test 1
 operators = ["<", "<=", ">", ">=", "==", "!="]
 
-#for operator in operators:
-#    if oprel.run(operator):
-#        print(f"'{operator}' is a valid comparison operator.")
-#    else:
-#        print(f"'{operator}' is not a valid comparison operator.")
-
+for operator in operators:
+   if oprel.run(operator):
+       print(f"'{operator}' is a valid comparison operator.")
+   else:
+       print(f"'{operator}' is not a valid comparison operator.")
 
