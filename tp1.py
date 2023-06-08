@@ -32,9 +32,10 @@ oprel = DFA(
 
 operators = ["<", "<=", ">", ">=", "==", "!="]
 
-for operator in operators:
-    if oprel.run(operator):
-        print(f"'{operator}' is a valid comparison operator.")
-    else:
-        print(f"'{operator}' is not a valid comparison operator.")
+#for operator in operators:
+#    if oprel.run(operator):
+#        print(f"'{operator}' is a valid comparison operator.")
+#    else:
+#        print(f"'{operator}' is not a valid comparison operator.")
+
 
