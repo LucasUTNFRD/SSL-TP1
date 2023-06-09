@@ -10,7 +10,7 @@ class DFA :
     def __repr__(self) :
         return f"DFA({self.Q},\n\t{self.Sigma},\n\t{self.delta},\n\t{self.q0},\n\t{self.F})"
     
-    def run (self,w) :
+    def recognize_lexeme (self,w) :
         q = self.q0
     
         for symbol in w:
@@ -20,7 +20,7 @@ class DFA :
                 return False
         
         return q in self.F #devuelve boolean que dice si estan en los finales
-
+    
 si_sino = DFA(
         {0,1,2,3,4},
         {"s","i","n","o"},
@@ -90,8 +90,19 @@ numero = DFA(
     0,
     {1}
 )
+var = DFA(
+        {0,1},
+        {chr(letter) for letter in range(128) if chr(letter).isalnum()},
+        {(0, chr(letter)): 1 for letter in range(128) if chr(letter).isalpha()} | {(1, chr(letter)): 1 for letter in range(128) if chr(letter).isalnum()},
+        0,
+        {1}
+)
 
-if numero.run("98"):
-    print("valid")
-else :
-    print("cagada")
+if var.recognize_lexeme("var123"):#true
+    print('true')
+else:
+    print('false')
+if var.recognize_lexeme("1var123"):#false
+    print('true')
+else:
+    print('false')
