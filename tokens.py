@@ -85,8 +85,8 @@ mostrar = DFA(
 
 numero = DFA(
     {0, 1},
-    {str(digit) for digit in range(10)},
-    {(i, str(digit)): 1 for i in range(2) for digit in range(10)},
+    {chr(digit) for digit in range(10)},
+    {(0,str(x)):1 for x in range(10)} | {(1,str(x)):1 for x in range(10)},
     0,
     {1}
 )
@@ -98,6 +98,20 @@ var = DFA(
         {1}
 )
 
+oprel = DFA(
+        {0,1,2,3,4,5,6,7,8},
+        {"<","=","!",">"},
+        {(0,"!"):7,(0,'<'):1,(0,'='):3,(0,'>'):5,(1,'='):2,(3,'='):4,(5,'='):6,(7,'='):8},
+        0,
+        {1,2,4,5,6,8}
+)
+
+if numero.recognize_lexeme('123'):
+    print('true')
+else:
+    print('false')
+
+
 if var.recognize_lexeme("var123"):#true
     print('true')
 else:
@@ -106,3 +120,5 @@ if var.recognize_lexeme("1var123"):#false
     print('true')
 else:
     print('false')
+
+
