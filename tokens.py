@@ -183,7 +183,7 @@ else:
 
 # funcion lexer
 def lexer(w):
-    automatas = [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult]
+    automatas = [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult, var]
     lista = w.split()
     listlexema = []
     for p in lista:
