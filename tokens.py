@@ -165,4 +165,15 @@ if var.recognize_lexeme("1var123"):#false
 else:
     print('false')
 
-
+# funcion reconocer palabras reservadas
+automatas = ['si_sino', 'entonces', 'finsi', 'repetir', 'hasta', 'equal', 'leer', 'mostrar', 'func', 'finfunc', 'numero', 'parentesis', 'punto_coma', 'oprel', 'opsuma', 'opmult']
+reservadas = ['si', 'sino', 'entonces', 'finsi', 'repetir', 'hasta', '=', 'leer', 'mostrar', 'func', 'finfunc', '<', '>', '<=', '>=', '==', '!=', '+', '*']
+lista = w.split()
+listlexema = []
+for p in lista:
+    if p in reservadas:
+        for a in automatas:
+            if a.recognize_lexeme(p):
+                listlexema.extend(a) 
+    else:
+        listlexema.extend(p) 
