@@ -1,14 +1,15 @@
 class DFA : 
 
-    def __init__(self,Q,Sigma,delta,q0,F) :
+    def __init__(self,Q,Sigma,delta,q0,F,name) :
         self.Q = Q # set of states
         self.Sigma = Sigma # set of symbols
         self.delta = delta # transition function as a dictionary
         self.q0 = q0 # initial state
-        self.F = F # set of final states 
+        self.F = F # set of final states
+        self.name = name
             
     def __repr__(self) :
-        return f"DFA({self.Q},\n\t{self.Sigma},\n\t{self.delta},\n\t{self.q0},\n\t{self.F})"
+        return f"DFA({self.Q},\n\t{self.Sigma},\n\t{self.delta},\n\t{self.q0},\n\t{self.F},\n\t{self.name})"
     
     def recognize_lexeme (self,w) :
         q = self.q0
@@ -26,7 +27,8 @@ si_sino = DFA(
         {"s","i","n","o"},
         {(0,"s"):1,(1,"i"):2,(2,"n"):3,(3,"o"):4},
         0,
-        {2,4}
+        {2,4},
+        'si_sino'
 )
 
 
@@ -35,7 +37,8 @@ entonces = DFA(
         {"e","n","t","o","c","s"},
         {(0,"e"):1,(1,"n"):2,(2,"t"):3,(3,"o"):4,(4,"n"):5,(5,"c"):6,(6,"e"):7,(7,"s"):8},
         0,
-        {8}
+        {8},
+        'entonces'
 )
 
 
@@ -44,7 +47,8 @@ finsi = DFA(
         {"f","i","n","s"},
         {(0,"f"):1,(1,"i"):2,(2,"n"):3,(3,"s"):4,(4,"i"):5},
         0,
-        {5}
+        {5},
+        'finsi'
 )
 
 
@@ -53,7 +57,8 @@ repetir = DFA(
         {"r","e","p","t","i"},
         {(0,"r"):1,(1,"e"):2,(2,"p"):3,(3,"e"):4,(4,"t"):5,(5,"i"):6,(6,"r"):7},
         0,
-        {7}
+        {7},
+        'repetir'
 )
 
 
@@ -62,7 +67,8 @@ hasta = DFA(
         {"h","a","s","t"},
         {(0,"h"):1,(1,"a"):2,(2,"s"):3,(3,"t"):4,(4,"a"):5},
         0,
-        {5}
+        {5},
+        'hasta'
 )
 
 
@@ -71,7 +77,8 @@ leer = DFA(
         {"l","e","r"},
         {(0,"l"):1,(1,"e"):2,(2,"e"):3,(3,"r"):4},
         0,
-        {4}
+        {4},
+        'leer'
 )
 
 
@@ -80,7 +87,8 @@ mostrar = DFA(
         {"m","o","s","t","r","a"},
         {(0,"m"):1,(1,"o"):2,(2,"s"):3,(3,"t"):4,(4,"r"):5,(5,"a"):6,(6,"r"):7},
         0,
-        {7}
+        {7},
+        'mostrar'
 )
 
 numero = DFA(
@@ -88,14 +96,16 @@ numero = DFA(
     {chr(digit) for digit in range(10)},
     {(0,str(x)):1 for x in range(10)} | {(1,str(x)):1 for x in range(10)},
     0,
-    {1}
+    {1},
+    'numero'
 )
 var = DFA(
         {0,1},
         {chr(letter) for letter in range(128) if chr(letter).isalnum()},
         {(0, chr(letter)): 1 for letter in range(128) if chr(letter).isalpha()} | {(1, chr(letter)): 1 for letter in range(128) if chr(letter).isalnum()},
         0,
-        {1}
+        {1},
+        'var'
 )
 
 oprel = DFA(
@@ -103,7 +113,8 @@ oprel = DFA(
         {"<","=","!",">"},
         {(0,"!"):7,(0,'<'):1,(0,'='):3,(0,'>'):5,(1,'='):2,(3,'='):4,(5,'='):6,(7,'='):8},
         0,
-        {1,2,4,5,6,8}
+        {1,2,4,5,6,8},
+        'oprel'
 )
 
 func = DFA(
@@ -111,7 +122,8 @@ func = DFA(
     {"f","u","n","c"},
     {(0,"f"):1,(1,"u"):2,(2,"n"):3,(3,"c"):4},
     0,
-    {4}
+    {4},
+    'func'
 )
 
 finfunc = DFA(
@@ -119,7 +131,8 @@ finfunc = DFA(
      {"f","i","u","n","c"},
      {(0,"f"):1,(1,"i"):2,(2,"n"):3,(3,"f"):4,(4,"u"):5,(5,"n"):6,(6,"c"):7},
      0,
-     {7}
+     {7},
+     'finfunc'
  )
 
 parentesis = DFA(
@@ -127,7 +140,8 @@ parentesis = DFA(
     {"(",")"},
     {(0,"("):1,(0,")"):1},
     0,
-    {1}
+    {1},
+    'parentesis'
 )
 
 equal = DFA(
@@ -135,7 +149,8 @@ equal = DFA(
     {"="},
     {(0,"="):1},
     0,
-    {1}
+    {1},
+    'equal'
 )
 
 punto_coma = DFA(
@@ -143,7 +158,8 @@ punto_coma = DFA(
     {";"},
     {(0,";"):1},
     0,
-    {1}
+    {1},
+    'punto_coma'
 )
 
 #########################
@@ -165,13 +181,12 @@ if var.recognize_lexeme("1var123"):#false
 else:
     print('false')
 
-# funcion reconocer palabras reservadas
-automatas = [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult]
-lista = w.split()
-listlexema = []
-for p in lista:
-    for a in automatas:
-        if a.recognize_lexeme(p):
-            listlexema.extend(a)
-        else:
-            listlexema.extend(var)
+# funcion lexer
+def lexer(w)
+    automatas = [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult]
+    lista = w.split()
+    listlexema = []
+    for p in lista:
+        for a in automatas:
+            if a.recognize_lexeme(p):
+                listlexema.append((a.name,p))
