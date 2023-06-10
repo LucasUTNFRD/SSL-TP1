@@ -162,9 +162,23 @@ punto_coma = DFA(
     'punto_coma'
 )
 
-#########################
-# falta opsuma y opmult #
-#########################
+opsuma = DFA(
+    {0,1},
+    {"+","-"},
+    {(0,"+"):1,(0,"-"):1},
+    0,
+    {1},
+    'opsuma'
+)
+
+opmult = DFA(
+    {0,1},
+    {"*","/"},
+    {(0,"*"):1,(0,"/"):1},
+    0,
+    {1},
+    'opmult'
+)
 
 if numero.recognize_lexeme('123'):
     print('true')
