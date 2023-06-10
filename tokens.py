@@ -182,7 +182,7 @@ else:
     print('false')
 
 # funcion lexer
-def lexer(w)
+def lexer(w):
     automatas = [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult]
     lista = w.split()
     listlexema = []
@@ -190,3 +190,4 @@ def lexer(w)
         for a in automatas:
             if a.recognize_lexeme(p):
                 listlexema.append((a.name,p))
+                break
