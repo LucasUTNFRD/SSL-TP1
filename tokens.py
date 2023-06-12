@@ -27,10 +27,18 @@ si_sino = DFA(
         {"s","i","n","o"},
         {(0,"s"):1,(1,"i"):2,(2,"n"):3,(3,"o"):4},
         0,
-        {2,4},
-        'si_sino'
+        {4},
+        'sino'
 )
 
+si = DFA(
+        {0,1,},
+        {"s","i"},
+        {(0,"s"):1,(1,"i"):2},
+        0,
+        {2},
+        'si'
+)
 
 entonces = DFA(
         {0,1,2,3,4,5,6,7,8},
@@ -180,28 +188,20 @@ opmult = DFA(
     'opmult'
 )
 
-if numero.recognize_lexeme('123'):
-    print('true')
-else:
-    print('false')
-
-
-if var.recognize_lexeme("var123"):#true
-    print('true')
-else:
-    print('false')
-if var.recognize_lexeme("1var123"):#false
-    print('true')
-else:
-    print('false')
+token_list= [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult, var]
 
 # funcion lexer
-def lexer(w):
-    automatas = [si_sino, entonces, finsi, repetir, hasta, equal, leer, mostrar, func, finfunc, numero, parentesis, punto_coma, oprel, opsuma, opmult, var]
-    lista = w.split()
-    listlexema = []
-    for p in lista:
-        for a in automatas:
-            if a.recognize_lexeme(p):
-                listlexema.append((a.name,p))
+def lexer(codigo_fuente):
+    lista = codigo_fuente.split()
+    list_lexema = []
+    for w in lista:
+        for token in token_list:
+            if token.recognize_lexeme(w):
+                list_lexema.append((token.name,w))
                 break
+    return list_lexema
+
+code = "si x > 5 entonces mostrar 'x es mayor que 5' sino mostrar 'x no es mayor que 5' finsi"
+tokens = lexer(code)
+for token in tokens:
+    print(token)
