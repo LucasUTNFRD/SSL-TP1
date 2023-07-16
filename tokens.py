@@ -180,9 +180,9 @@ def lexer(codigo_fuente):
     lista_nueva = []
     for x in lista:
         for y in range(0, len(x)):
-            z=y+1
-            if x[y].isdigit() and not(x[z].isdigit()):
-                x = x[:z] + "-" + x[z:]
+            if not(y+1 == len(x)):
+                if x[0].isdigit() and x[y].isdigit() and not(x[y+1].isdigit()):
+                    x = x[:y+1] + "-" + x[y+1:]
         lista_nueva.append(x)
     str = '-'.join(lista_nueva)
     resultado = str.split("-")
