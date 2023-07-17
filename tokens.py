@@ -197,7 +197,7 @@ def lexer(codigo_fuente):
 code = "si x > 5 entonces mostrar ' x es mayor que 5 ' sino mostrar ' x no es mayor que 5 ' finsi"
 ## para que reconozca texto necesita estar entre espacios incluso con ' ', 
 ## sino no aparece en la lista despues del split
-
-tokens = lexer(codigo_fuente)
+code1 ="123var"
+tokens = lexer(code1)
 for token in tokens:
     print(token)
