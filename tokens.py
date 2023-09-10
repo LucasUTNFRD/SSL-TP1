@@ -167,10 +167,3 @@ opmult = DFA(
 )
 
 
-token_list = [(si,'si'),(sino,'sino'), (entonces,'entonces'), (finsi,'finsi'),
-            (repetir,'repetir'), (hasta,'hasta'), (equal,'equal'), (leer,'leer'),
-            (mostrar,'mostrar'), (func,'func'), (finfunc,'finfunc'), (numero,'numero'),
-            (parentesis,'parentesis'), (punto_coma,'punto_coma'), (oprel,'oprel'), (opsuma,'opsuma'),
-            (opmult,'opmult'), (var,'var')]
-
-
