@@ -173,36 +173,4 @@ token_list = [(si,'si'),(sino,'sino'), (entonces,'entonces'), (finsi,'finsi'),
             (parentesis,'parentesis'), (punto_coma,'punto_coma'), (oprel,'oprel'), (opsuma,'opsuma'),
             (opmult,'opmult'), (var,'var')]
 
-# funcion lexer
 
-def lexer(codigo_fuente):
-    lista = codigo_fuente.split()
-    lista_nueva = []
-    for x in lista:
-        for y in range(0, len(x)):
-            if not(y+1 == len(x)):
-                if x[0].isdigit() and x[y].isdigit() and not(x[y+1].isdigit()):
-                    x = x[:y+1] + "-" + x[y+1:]
-        lista_nueva.append(x)
-    str = '-'.join(lista_nueva)
-    resultado = str.split("-")
-    list_lexema = []
-    for w in resultado:
-        for (token,name) in token_list:
-            if token.recognize_lexeme(w):
-                list_lexema.append((name,w))
-                break
-    return list_lexema
-
-code = "si x > 5 entonces mostrar  sino mostrar  x no es mayor que 5  finsi"
-## para que reconozca texto necesita estar entre espacios incluso con ' ', 
-## sino no aparece en la lista despues del split
-code1 ="123var"
-print(code)
-tokens = lexer(code)
-for token in tokens:
-    print(token)
-print(code1)
-tokens = lexer(code1)
-for token in tokens:
-    print(token)
