@@ -10,6 +10,17 @@ class DFA :
     def __repr__(self) :
         return f"DFA({self.Q},\n\t{self.Sigma},\n\t{self.delta},\n\t{self.q0},\n\t{self.F})"
     
+#     def recognize_lexeme (self,w) :
+#         q = self.q0
+    
+#         for symbol in w:
+#             if (q,symbol) in self.delta:
+#                 q = self.delta[(q,symbol)] #manejamos las keys del dict como tuplas :)
+#             else:
+#                 return False
+        
+#         return q in self.F #devuelve boolean que dice si estan en los finales
+
     def recognize_lexeme (self,w) :
         q = self.q0
     
@@ -17,9 +28,12 @@ class DFA :
             if (q,symbol) in self.delta:
                 q = self.delta[(q,symbol)] #manejamos las keys del dict como tuplas :)
             else:
-                return False
+                return "Trampa"
         
-        return q in self.F #devuelve boolean que dice si estan en los finales
+        if q in self.F:#devuelve boolean que dice si estan en los finales
+                return "Final"
+        else:
+                return "No final"
     
 
 sino = DFA(
@@ -135,11 +149,11 @@ parentesis = DFA(
 )
 
 equal = DFA(
-        {0},
-        {"="},
-        {(0,"="):1},
+        {0,1,2,3,4,5},
+        {"e","q","u","a","l"},
+        {(0,"e"):1,(1,"q"):2,(2,"u"):3,(3,"a"):4,(4,"l"):5},
         0,
-        {1}
+        {5}
 )
 
 punto_coma = DFA(
