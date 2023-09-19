@@ -10,16 +10,6 @@ class DFA :
     def __repr__(self) :
         return f"DFA({self.Q},\n\t{self.Sigma},\n\t{self.delta},\n\t{self.q0},\n\t{self.F})"
     
-#     def recognize_lexeme (self,w) :
-#         q = self.q0
-    
-#         for symbol in w:
-#             if (q,symbol) in self.delta:
-#                 q = self.delta[(q,symbol)] #manejamos las keys del dict como tuplas :)
-#             else:
-#                 return False
-        
-#         return q in self.F #devuelve boolean que dice si estan en los finales
 
     def recognize_lexeme (self,w) :
         q = self.q0
