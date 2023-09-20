@@ -130,10 +130,18 @@ finfunc = DFA(
         {7}
  )
 
-parentesis = DFA(
+parentesisApertura = DFA(
+        {0,1},
+        {"("},
+        {(0,"("):1},
+        0,
+        {1}
+)
+
+parentesisCerrado= DFA(
         {0,1},
         {"(",")"},
-        {(0,"("):1,(0,")"):1},
+        {(0,")"):1},
         0,
         {1}
 )
