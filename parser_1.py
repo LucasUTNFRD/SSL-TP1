@@ -2,14 +2,14 @@ from grammar import *
 
 def parser(codigo_fuente):
     datos_locales = {
-        'lista_tokens': codigo_fuente + [('EOF','EOF')],
+        'lista_tokens': codigo_fuente + [('#','#')],
         'index': 0,
         'error': False,
     }   
     def principal():
         pni('Program')
         caracter_actual = datos_locales['lista_tokens'][datos_locales['index']][0] # se obtiene token de [('Token','Lexema')]
-        if caracter_actual != 'EOF' or datos_locales['error']:
+        if caracter_actual != '#' or datos_locales['error']:
             print('La cadena no pertenece al lenguaje')
             return False
         print('La cadena pertenece al lenguaje')

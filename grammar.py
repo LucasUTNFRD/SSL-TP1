@@ -18,7 +18,7 @@ VN = [
     'Expresion2',
     'Termino',
     'Factor',
-    'ListaSentecias_Prime',
+    'ListaSentencias_Prime',
     'ListaPar_Prime',
     'Expresion2_Prime',
     'Termino_Prime'
@@ -29,9 +29,9 @@ P = {
         ['ListaSentencias']
     ],
     'ListaSentencias': [
-        ['Sentencia','ListaSentecias_Prime']
+        ['Sentencia','ListaSentencias_Prime']
     ],
-    'ListaSentecias_Prime' :[
+    'ListaSentencias_Prime' :[
         [';', 'Sentencia'],['λ']
     ],
     'Sentencia': [
@@ -42,16 +42,12 @@ P = {
         ['SentenciaMostrar'],
         ['SentenciaFun']
     ],
-    'SentenciaSi': [
-        ['si', 'Expresion', 'entonces', 'ListaSentencias', 'sino', 'ListaSentencias', 'finsi'],
-        ['si', 'Expresion', 'entonces', 'ListaSentencias', 'finsi']
+    'SentenciaSi': [ 
+        ['si', 'Expresion', 'entonces', 'ListaSentencias', 'SentenciaSi_Prime'] 
     ],
-
-    ## sugerencia
-    ## 'SentenciaSi': [ ['si', 'Expresion', 'entonces', 'ListaSentencias', 'SentenciaSi_Prime'] ],
-    ## 'SentenciaSi_Prime : [ ['sino', 'ListaSentencias', 'finsi'], ['λ'] ],
-
-
+    'SentenciaSi_Prime' : [ 
+        ['sino', 'ListaSentencias', 'finsi'], ['finsi'] 
+    ],
     'SentenciaRepetir': [
         ['repetir', 'ListaSentencias', 'hasta', 'Expresion']
     ],
@@ -90,7 +86,7 @@ P = {
         ['Factor','Termino_Prime']
     ],
     'Termino_Prime':[
-        [ 'opmult', 'Factor','Termino_Prime'],['λ']     
+        ['opmult', 'Factor','Termino_Prime'],['λ']     
     ],
     'Factor': [
         ['(', 'Expresion', ')'],
@@ -108,22 +104,27 @@ SD = {
                 "mostrar" : ['ListaSentencias'], "equal" : [], "id" : ['ListaSentencias'], "num" : [], "oprel" : [],
                 "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
-    'ListaSentencias' : {"si" : ['Sentencia','ListaSentecias_Prime'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
-                "func" : ['Sentencia','ListaSentecias_Prime'], "repetir" : ['Sentencia','ListaSentecias_Prime'], "hasta" : [],
-                "leer" : ['Sentencia','ListaSentecias_Prime'], "mostrar" : ['Sentencia','ListaSentecias_Prime'], "equal" : [], 
-                "id" : ['Sentencia','ListaSentecias_Prime'], "num" : [], "oprel" : [], "parentesis1" : [], "parentesis2" : [],
+    'ListaSentencias' : {"si" : ['Sentencia','ListaSentencias_Prime'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+                "func" : ['Sentencia','ListaSentencias_Prime'], "repetir" : ['Sentencia','ListaSentencias_Prime'], "hasta" : [],
+                "leer" : ['Sentencia','ListaSentencias_Prime'], "mostrar" : ['Sentencia','ListaSentencias_Prime'], "equal" : [], 
+                "id" : ['Sentencia','ListaSentencias_Prime'], "num" : [], "oprel" : [], "parentesis1" : [], "parentesis2" : [],
                 "puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Sentencia' : {"si" : ['SentenciaSi'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : ['SentenciaFun'], "repetir" : ['SentenciaRepetir'], "hasta" : [], "leer" : ['SentenciaLeer'],
                 "mostrar" : ['SentenciaMostrar'], "equal" : [], "id" : ['SentenciaAsig'], "num" : [], "oprel" : [],
                 "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
-    ############################### chusmear esto con linea 50 ###########################
-    'SentenciaSi' : {"si" : ['si', 'Expresion', 'entonces', 'ListaSentencias', 'sino', 'ListaSentencias', 'finsi'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+    
+    'SentenciaSi' : {"si" : ['si', 'Expresion', 'entonces', 'ListaSentencias', 'SentenciaSi_Prime'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
                 "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
-    ######################################################################################
+    
+    'SentenciaSi_Prime' : {"si" : [], "sino" : ['sino', 'ListaSentencias', 'finsi'], "entonces" : [], "finsi" : ['finsi'], "finfunc" : [],
+                "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
+                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
+                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]} 
+    
     'SentenciaRepetir' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : ['repetir', 'ListaSentencias', 'hasta', 'Expresion'], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
@@ -179,11 +180,24 @@ SD = {
                 "mostrar" : [], "equal" : [], "id" : ['id'], "num" : ['num'], "oprel" : [],
                 "parentesis1" : ['(', 'Expresion', ')'], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
-
-############################### falta ##################################################
-    'ListaSentecias_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+    'ListaSentencias_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
                 "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [';', 'Sentencia'] , "opsuma" : [], "opmult" : [],'#':[]},
+
+    'ListaPar_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+                "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
+                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
+                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [';', 'id','ListaPar_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
+
+    'Expresion2_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+                "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
+                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
+                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : ['opsuma', 'Termino','Expresion2_Prime'], "opmult" : [],'#':[]}
+
+    'Termino_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+                "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
+                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
+                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : ['opmult', 'Factor','Termino_Prime'],'#':[]} 
 }
 
