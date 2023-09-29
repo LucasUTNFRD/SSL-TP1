@@ -21,7 +21,9 @@ VN = [
     'ListaSentencias_Prime',
     'ListaPar_Prime',
     'Expresion2_Prime',
-    'Termino_Prime'
+    'Termino_Prime',
+    'SentenciaSi_Prime'
+    
 ]
 
 P = {
@@ -90,7 +92,7 @@ P = {
     ],
     'Factor': [
         ['(', 'Expresion', ')'],
-        ['num'],
+        ['numero'],
         ['id']
     ]
 }
@@ -101,103 +103,103 @@ P = {
 SD = { 
     'Program' : {"si" : ['ListaSentencias'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : ['ListaSentencias'], "repetir" : ['ListaSentencias'], "hasta" : [], "leer" : ['ListaSentencias'],
-                "mostrar" : ['ListaSentencias'], "equal" : [], "id" : ['ListaSentencias'], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : ['ListaSentencias'], "equal" : [], "id" : ['ListaSentencias'], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'ListaSentencias' : {"si" : ['Sentencia','ListaSentencias_Prime'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : ['Sentencia','ListaSentencias_Prime'], "repetir" : ['Sentencia','ListaSentencias_Prime'], "hasta" : [],
                 "leer" : ['Sentencia','ListaSentencias_Prime'], "mostrar" : ['Sentencia','ListaSentencias_Prime'], "equal" : [], 
-                "id" : ['Sentencia','ListaSentencias_Prime'], "num" : [], "oprel" : [], "parentesis1" : [], "parentesis2" : [],
-                "puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "id" : ['Sentencia','ListaSentencias_Prime'], "numero" : [], "oprel" : [], "(" : [], ")" : [],
+                ";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Sentencia' : {"si" : ['SentenciaSi'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : ['SentenciaFun'], "repetir" : ['SentenciaRepetir'], "hasta" : [], "leer" : ['SentenciaLeer'],
-                "mostrar" : ['SentenciaMostrar'], "equal" : [], "id" : ['SentenciaAsig'], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : ['SentenciaMostrar'], "equal" : [], "id" : ['SentenciaAsig'], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
     
     'SentenciaSi' : {"si" : ['si', 'Expresion', 'entonces', 'ListaSentencias', 'SentenciaSi_Prime'], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
     
     'SentenciaSi_Prime' : {"si" : [], "sino" : ['sino', 'ListaSentencias', 'finsi'], "entonces" : [], "finsi" : ['finsi'], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]} 
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]}, 
     
     'SentenciaRepetir' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : ['repetir', 'ListaSentencias', 'hasta', 'Expresion'], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'SentenciaAsig' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['id', 'equal', 'Expresion'], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['id', 'equal', 'Expresion'], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'SentenciaLeer' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : ['leer', 'id'],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'SentenciaMostrar' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : ['mostrar', 'Expresion'], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : ['mostrar', 'Expresion'], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'SentenciaFun' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : ['func', 'Proc', 'finfunc'], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Proc' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['id', '(', 'ListaPar', ')', 'ListaSentencias'], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['id', '(', 'ListaPar', ')', 'ListaSentencias'], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'ListaPar' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['id','ListaPar_Prime'], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['id','ListaPar_Prime'], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
                 
     'Expresion' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['Expresion2'], "num" : ['Expresion2'], "oprel" : [],
-                "parentesis1" : ['Expresion2'], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['Expresion2'], "numero" : ['Expresion2'], "oprel" : [],
+                "(" : ['Expresion2'], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Expresion2' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['Termino','Expresion2_Prime'], "num" : ['Termino','Expresion2_Prime'], "oprel" : [],
-                "parentesis1" : ['Termino','Expresion2_Prime'], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['Termino','Expresion2_Prime'], "numero" : ['Termino','Expresion2_Prime'], "oprel" : [],
+                "(" : ['Termino','Expresion2_Prime'], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Termino' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['Factor','Termino_Prime'], "num" : ['Factor','Termino_Prime'], "oprel" : [],
-                "parentesis1" : ['Factor','Termino_Prime'], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['Factor','Termino_Prime'], "numero" : ['Factor','Termino_Prime'], "oprel" : [],
+                "(" : ['Factor','Termino_Prime'], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Factor' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['id'], "num" : ['num'], "oprel" : [],
-                "parentesis1" : ['(', 'Expresion', ')'], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['id'], "numero" : ['numero'], "oprel" : [],
+                "(" : ['(', 'Expresion', ')'], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'ListaSentencias_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [';', 'Sentencia'] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [';', 'Sentencia'] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'ListaPar_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [';', 'id','ListaPar_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [';', 'id','ListaPar_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Expresion2_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : ['opsuma', 'Termino','Expresion2_Prime'], "opmult" : [],'#':[]}
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : ['opsuma', 'Termino','Expresion2_Prime'], "opmult" : [],'#':[]},
 
     'Termino_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : [], "num" : [], "oprel" : [],
-                "parentesis1" : [], "parentesis2" : [],"puntoycoma" : [] , "opsuma" : [], "opmult" : ['opmult', 'Factor','Termino_Prime'],'#':[]} 
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : ['opmult', 'Factor','Termino_Prime'],'#':[]} 
 }
 
