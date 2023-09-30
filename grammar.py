@@ -22,7 +22,8 @@ VN = [
     'ListaPar_Prime',
     'Expresion2_Prime',
     'Termino_Prime',
-    'SentenciaSi_Prime'
+    'SentenciaSi_Prime',
+    'Expresion_Prime'
     
 ]
 
@@ -75,8 +76,10 @@ P = {
         [';', 'id','ListaPar_Prime'],['λ']
     ],
     'Expresion': [
-        ['Expresion2', 'oprel', 'Expresion2'],
-        ['Expresion2']
+        ['Expresion2', 'Expresion_Prime']
+    ],
+    'Expresion_Prime' : [
+        ['oprel', 'Expresion2'],['λ']
     ],
     'Expresion2': [
         ['Termino','Expresion2_Prime']
@@ -164,8 +167,8 @@ SD = {
                 
     'Expresion' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
-                "mostrar" : [], "equal" : [], "id" : ['Expresion2'], "numero" : ['Expresion2'], "oprel" : [],
-                "(" : ['Expresion2'], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
+                "mostrar" : [], "equal" : [], "id" : ['Expresion2', 'Expresion_Prime'], "numero" : ['Expresion2', 'Expresion_Prime'], "oprel" : [],
+                "(" : ['Expresion2', 'Expresion_Prime'], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Expresion2' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
@@ -191,6 +194,11 @@ SD = {
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
                 "(" : [], ")" : [],";" : [';', 'id','ListaPar_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
+
+    'Expresion_Prime' :{"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
+                "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
+                "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : ['oprel', 'Expresion2'],
+                "(" : [], ")" : [],";" : [] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Expresion2_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
