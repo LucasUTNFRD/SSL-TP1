@@ -89,5 +89,3 @@ def lexer(programa):
                 raise ValueError("Token invalido")
 
     return tokens_out
-
-
