@@ -10,7 +10,7 @@ tokens = {
     "hasta":hasta,
     "equal":equal,
     "leer":leer,
-    "mostar":mostrar,
+    "mostrar":mostrar,
     "func":func,
     "finfunc":finfunc,
     "numero":numero,

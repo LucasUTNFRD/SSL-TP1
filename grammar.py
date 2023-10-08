@@ -35,7 +35,7 @@ P = {
         ['Sentencia','ListaSentencias_Prime']
     ],
     'ListaSentencias_Prime' :[
-        [';', 'Sentencia'],['λ']
+        [';', 'Sentencia','ListaSentencias_Prime'],['λ']
     ],
     'Sentencia': [
         ['SentenciaSi'],
@@ -188,12 +188,12 @@ SD = {
     'ListaSentencias_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
-                "(" : [], ")" : [],";" : [';', 'Sentencia'] , "opsuma" : [], "opmult" : [],'#':[]},
+                "(" : [], ")" : [],";" : [';','Sentencia','ListaSentencias_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'ListaPar_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
-                "(" : [], ")" : [],";" : [';', 'id','ListaPar_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
+                "(" : [], ")" : [],";" : [';','id','ListaPar_Prime'] , "opsuma" : [], "opmult" : [],'#':[]},
 
     'Expresion_Prime' :{"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
@@ -203,7 +203,7 @@ SD = {
     'Expresion2_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],
                 "mostrar" : [], "equal" : [], "id" : [], "numero" : [], "oprel" : [],
-                "(" : [], ")" : [],";" : [] , "opsuma" : ['opsuma', 'Termino','Expresion2_Prime'], "opmult" : [],'#':[]},
+                "(" : [], ")" : [],";" : [] , "opsuma" : ['opsuma','Termino','Expresion2_Prime'], "opmult" : [],'#':[]},
 
     'Termino_Prime' : {"si" : [], "sino" : [], "entonces" : [], "finsi" : [], "finfunc" : [],
                 "func" : [], "repetir" : [], "hasta" : [], "leer" : [],

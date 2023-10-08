@@ -53,12 +53,12 @@ def parser(lista_tokens):                   #la lista de tokens viene del lexer
 #             return False
 #         print('La cadena pertenece al lenguaje')
 #         return True   
-#            
+           
 #     def pni(no_terminal):
 #         terminal = datos_locales['lista_tokens'][datos_locales['index']][0]
 #         if terminal in SD[no_terminal]:
 #             procesar(SD[no_terminal][terminal])
-#
+
 #     def procesar(cuerpo_produccion):
 #         for simbolo in cuerpo_produccion:
 #             caracter_actual = datos_locales['lista_tokens'][datos_locales['index']][0]
@@ -73,6 +73,10 @@ def parser(lista_tokens):                   #la lista de tokens viene del lexer
 #                 pni(simbolo)
 #                 if datos_locales['error']:
 #                     break
-#                  
+                 
 
+parser(lexer("si 6 > 7 entonces var equal 8"))
 parser(lexer("leer vauxi ; vauxi equal 5"))
+parser(lexer('mostrar 3 * 2 > 5 * 6'))
+parser(lexer("si 4 > 3 entonces repetir leer id hasta 3 sino mostrar 4 finsi"))
+parser(lexer("si 6>7 entonces leer id finsi"))
